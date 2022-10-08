@@ -15,9 +15,18 @@ background-color: #b4cf69;
 background-color: #64713e;
 }
 
+/* customs text */
+.text-small {
+  font-size: 10px;
+}
+
 
 /* CUSTOM STYLES */
 /* ATTENDEES */
+.grid-attendees {
+  max-width: 210px;
+}
+
 .card-attendees {
   border-radius: 1.2rem;
   cursor: pointer;
@@ -48,6 +57,27 @@ background-color: #64713e;
   font-size: 3.5rem;
   margin: 6rem 0;
 }
+
+/* PROFILES */
+.profile-title {
+  font-size: 4rem;
+}
+
+@media only screen and (max-width: 575px) {  
+  .profile-title {
+    font-size: 2rem;
+  }
+
+  .profile-section {
+    padding: 2rem!important;
+  }
+}
+
+.stats-profile {
+  border: 2px solid #000;
+  border-radius: 1.2rem;
+}
+
 
 /* CUSTOM BUTTONS */
 .btn-primary {
