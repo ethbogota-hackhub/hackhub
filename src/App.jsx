@@ -2,7 +2,7 @@ import { ApolloProvider } from '@apollo/client';
 import { ConnectKitButton } from 'connectkit';
 import AppProvider from './contexts/app/AppProvider';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { apolloClient } from './lib/apolloClient';
+import { apolloClient } from './lib/apollo/apolloClient';
 // components
 import Navbar from './components/Navbar';
 import Topbar from './components/Topbar';
@@ -11,7 +11,6 @@ import Home from './views/Home';
 import UserSkills from './views/UserSkills';
 import Attendees from './views/Attendees';
 import Events from './views/Events';
-import { apolloClient } from './lib/apollo/apolloClient';
 
 import './styles/App.css';
 
