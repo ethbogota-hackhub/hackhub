@@ -6,8 +6,8 @@ const Organizer = () => {
   return (
     <div className='container-fluid'>
       <h1 className='text-center mb-5'>Get to know your event</h1>
-      <img className='w-50 rounded mx-auto d-block' src={organizer} alt="" />
-      <form action="" id="" className='d-flex flex-column align-items-center'>
+      <img className='w-25 rounded mx-auto d-block' src={organizer} alt="" />
+      <form action="" id="" className='d-flex flex-column align-items-center shadow mx-5'>
         <div className='d-flex flex-column w-75 my-4 form-floating'>
             <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingInput" id="floatingInput" aria-label='' placeholder='Organizer Name' />
             <label htmlFor="floatingInput">Organizer Name</label>
@@ -67,12 +67,12 @@ const Organizer = () => {
             <div className='w-75 mb-4'>
               <h3>Terms and conditions</h3>
               <div>
-                <input type="checkbox" name="terms" id="terms" aria-label='' />
+                <input type="checkbox" className='red' name="terms" id="terms" aria-label='' />
                 <label htmlFor="terms" className='px-2'>By creating and event, I agree to the policies and terms of use.</label>
               </div>
             </div>
           <div className=''>
-            <button type='button' className='btn btn-dark btn-lg border border-0'>Create your event</button>
+            <button type='button' className='btn btn-dark btn-lg border border-0 mb-5'>Create your event</button>
         </div>
       </form>
     </div>
