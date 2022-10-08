@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Footer from '../../components/Footer';
 import './index.css';
 
 const Home = () => {
@@ -13,20 +14,23 @@ const Home = () => {
     ]);
     
     return (
-        <div className="container-fluid px-0">
-            <div className='row mx-0'>
-                <div className="col-12 col-md-8 p-5 text-left">
-                    <h1 className="home-title">
-                        meet. <span className='fw-bold'>build. </span>
-                        all in one place.
-                    </h1>
-                </div>
+        <>
+            <div className="container-fluid px-0">
+                <div className='row mx-0'>
+                    <div className="col-12 col-md-8 p-5 text-left">
+                        <h1 className="home-title">
+                            meet. <span className='fw-bold'>build. </span>
+                            achieve.
+                        </h1>
+                    </div>
 
-                <div className="col-12 col-md-4 d-flex justify-content-center align-items-center">
-                    <button className='btn btn-primary rounded-pill btn-join-us'>Join Us</button>
+                    <div className="col-12 col-md-4 d-flex justify-content-center align-items-center">
+                        <button className='btn btn-primary rounded-pill btn-join-us'>Join Us</button>
+                    </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>    
     );
 }
  
