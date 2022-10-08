@@ -1,3 +1,4 @@
+import { ApolloProvider } from '@apollo/client';
 import { ConnectKitButton } from 'connectkit';
 import AppProvider from './contexts/app/AppProvider';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -6,6 +7,7 @@ import Navbar from './components/Navbar';
 import Topbar from './components/Topbar';
 // views
 import Home from './views/Home';
+import { apolloClient } from './lib/apolloClient';
 
 import './styles/App.css';
 
@@ -13,14 +15,16 @@ const App = () => {
 
   return (
     <AppProvider>
-      <BrowserRouter>
-        <Topbar />
-        <Navbar />
-        <ConnectKitButton />
-        <Routes>
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+      <ApolloProvider client={apolloClient}>
+        <BrowserRouter>
+          <Topbar />
+          <Navbar />
+          <ConnectKitButton />
+          <Routes>
+            <Route path='/' element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </ApolloProvider>
     </AppProvider>
   )
 }
