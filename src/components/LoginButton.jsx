@@ -5,13 +5,13 @@ import toast from 'react-hot-toast';
 
 import { useLazyQuery, useQuery, useMutation } from '@apollo/client';
 import { CHALLENGE_QUERY, AUTHENTICATE_MUTATION } from '../lib/apollo/queries';
-import { useSignMessage } from 'wagmi';
+import { useSignMessage, useAccount } from 'wagmi';
 
 const LoginButton = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
-    const address = '0xC9eBA01b7249EB0d7F019946e5358a28E31edE33';
 
     const { signMessageAsync, isLoading: signLoading } = useSignMessage();
+    const { address, connector } = useAccount();
 
     const [loadChallenge, { error: errorChallenge, loading: challengeLoading }] = useLazyQuery(CHALLENGE_QUERY, { fetchPolicy: 'no-cache' });
     const [authenticate, { error: errorAuthenticate, loading: authLoading }] =
