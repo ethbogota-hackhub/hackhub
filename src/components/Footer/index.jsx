@@ -3,7 +3,6 @@ import { BsGithub } from "react-icons/bs";
 import { RiCopyrightLine } from 'react-icons/ri';
 // import lens from "../../assets/lens_Icon.jpg"
 import EthContribute from '../../assets/eth_contribute.jpg';
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (

@@ -16,6 +16,39 @@ background-color: #64713e;
 }
 
 
+/* CUSTOM STYLES */
+/* ATTENDEES */
+.card-attendees {
+  border-radius: 1.2rem;
+  cursor: pointer;
+  transition: 650ms;
+}
+.card-attendees:hover {
+  background-color: #f0f0f0;
+  transition: 250ms;
+}
+.card-attendees:active:focus {
+  background-color: #dadada;
+  transition: 250ms;
+}
+
+@media only screen and (max-width: 575px) {
+  .container-attendees {
+    padding-left: 1.2rem!important;
+    padding-right: 1.2rem!important;
+  }
+
+  .events-title {
+    margin: 4rem 0;
+  }
+}
+
+/* EVENTS */
+.events-title {
+  font-size: 3.5rem;
+  margin: 6rem 0;
+}
+
 /* CUSTOM BUTTONS */
 .btn-primary {
   display: inline-block;
@@ -34,6 +67,7 @@ background-color: #64713e;
   box-shadow: 0 0 0 4px #d0dbb1;
   background-color: #4d5c23;
   border-color: #4d5c23;
+  color: #fff;
 }
 .btn-primary:active {
   background-color: #4d5c23;

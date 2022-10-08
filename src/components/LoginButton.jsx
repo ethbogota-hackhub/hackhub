@@ -2,10 +2,12 @@ import { ConnectKitButton } from 'connectkit';
 import { Modal } from "react-bootstrap";
 import { useState } from "react";
 import toast from 'react-hot-toast';
+import { FiUserCheck } from 'react-icons/fi';
 
 import { useLazyQuery, useQuery, useMutation } from '@apollo/client';
 import { CHALLENGE_QUERY, AUTHENTICATE_MUTATION } from '../lib/apollo/queries';
 import { useSignMessage, useAccount } from 'wagmi';
+import { Link } from 'react-router-dom';
 
 const LoginButton = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -41,15 +43,31 @@ const LoginButton = () => {
     return (
         <ConnectKitButton.Custom>
             {({ isConnected, isConnecting, show, hide, address, ensName }) => {
-
-                return (
-                    !isConnected
-                        ? <button onClick={show} className="btn btn-primary rounded-pill px-3">
+                const handleButtons = () => {
+                    if (isConnected)
+                        <button onClick={show} className="btn btn-primary rounded-pill px-3">
                             {isConnected ? address : "Connect Wallet"}
                         </button>
-                        : <button onClick={handleSign} className="btn btn-primary rounded-pill px-3">
+                    else 
+                        <button onClick={handleSign} className="btn btn-primary rounded-pill px-3">
                             Lens Login
                         </button>
+                }
+
+                const handleProfile = () => {
+                    return (
+                        <div className='d-flex justify-content-center align-items-center'>
+                            <Link to="/profile" className='btn btn-sm btn-primary rounded-circle p-1'>
+                                <FiUserCheck size={25} className="m-2" style={{ color: '#fff' }}/>
+                            </Link>
+                        </div>
+                    );
+                }
+
+                return (
+                    !authenticate 
+                    ? handleButtons()
+                    : handleProfile()
                 );
             }}
         </ConnectKitButton.Custom>

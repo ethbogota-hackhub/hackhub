@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiFillHome } from 'react-icons/ai';
+import { FaUsers } from 'react-icons/fa';
+import { MdOutlineEmojiEvents } from 'react-icons/md';
+import { GoBook } from 'react-icons/go';
 import { useApp } from '../../hooks/useApp';
 import { scrollToTop } from '../../common/utils';
 import './index.css';
 import { version } from '../../../package.json';
+import LoginButton from '../LoginButton';
 
 const Topbar = () => {
     const { isOpenTopbar, setIsOpenTopbar } = useApp();
@@ -11,29 +15,32 @@ const Topbar = () => {
     return (
         <div className={`shadow bgnd-primary d-flex flex-column justify-content-center topbar topbar-${isOpenTopbar ? 'open' : 'close'}`}>
             <div className='p-4 mb-auto d-flex justify-content-between'>
-                <h1 className='fw-bold p-0'>hackhub</h1>
+                <div className='d-flex'>
+                    <h1 className='d-flex justify-content-center align-items-center fw-bold py-0 ps-0 pe-3'>hackhub</h1>
+                    <LoginButton />
+                </div>
                 <AiOutlineClose size={25} onClick={() => setIsOpenTopbar(false)}/> 
             </div>
 
-            <ul>
+            <ul className='text-left'>
                 <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
                     <AiFillHome color='black' size={25} />
-                    <h5 className='mx-3'>Inicio</h5>
+                    <h5 className='mx-3'>inicio</h5>
                 </Link>
 
-                <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='/attendee' className='py-2 d-flex flex-inline'>
-                    <AiFillHome color='black' size={25} />
-                    <h5 className='mx-3'>Attendee</h5>
+                <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='/attendees' className='py-2 d-flex flex-inline'>
+                    <FaUsers color='black' size={25} />
+                    <h5 className='mx-3'>attendees</h5>
+                </Link>
+
+                <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='/events' className='py-2 d-flex flex-inline'>
+                    <MdOutlineEmojiEvents color='black' size={25} />
+                    <h5 className='mx-3'>events</h5>
                 </Link>
 
                 <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
-                    <AiFillHome color='black' size={25} />
-                    <h5 className='mx-3'>Organizer</h5>
-                </Link>
-
-                <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
-                    <AiFillHome color='black' size={25} />
-                    <h5 className='mx-3'>Connect Wallet</h5>
+                    <GoBook color='black' size={25} />
+                    <h5 className='mx-3'>organizer</h5>
                 </Link>
             </ul>
 

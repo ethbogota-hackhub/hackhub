@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Footer from '../components/Footer';
 
 const UserSkills = () => {
     const { register, formState: { errors }, setError, clearErrors, handleSubmit } = useForm();
@@ -176,11 +177,11 @@ const UserSkills = () => {
         <div className="container-fluid">
             <div className="row mx-0">
                 <div className="col-12 col-md-8">
-                    <h1 className="home-title">
+                    <h1 className="home-title ps-5">
                         Complete some <span className="fw-bold">basic info</span>   
                     </h1>
                 </div>
-                <div className="col-12 col-md-4 d-flex justify-content-center align-items-center">
+                <div className="col-12 col-md-4 pb-5 d-flex justify-content-center align-items-center">
                     <img src="/img/user.png" alt="networking" width="190px" />
                 </div>
             </div>
@@ -256,6 +257,8 @@ const UserSkills = () => {
                 }
                 </div>
             </form>
+
+            <Footer />
         </div>
     )
 }
