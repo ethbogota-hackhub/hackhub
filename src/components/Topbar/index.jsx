@@ -23,17 +23,17 @@ const Topbar = () => {
 
                 <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
                     <AiFillHome color='black' size={25} />
-                    <h5 className='mx-3'>Events</h5>
-                </Link>
-
-                <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
-                    <AiFillHome color='black' size={25} />
                     <h5 className='mx-3'>Attendee</h5>
                 </Link>
 
                 <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
                     <AiFillHome color='black' size={25} />
                     <h5 className='mx-3'>Organizer</h5>
+                </Link>
+
+                <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
+                    <AiFillHome color='black' size={25} />
+                    <h5 className='mx-3'>Connect Wallet</h5>
                 </Link>
             </ul>
 
