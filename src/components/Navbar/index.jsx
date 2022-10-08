@@ -19,7 +19,7 @@ const Navbar = () => {
                     attendee
                 </Link>
 
-                <Link to=''>
+                <Link to='/organizer'>
                     organizer
                 </Link>
                 
