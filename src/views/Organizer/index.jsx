@@ -8,37 +8,37 @@ const Organizer = () => {
       <h1 className='text-center mb-5'>Get to know your event</h1>
       <img className='w-50 rounded mx-auto d-block' src={organizer} alt="" />
       <form action="" id="" className='d-flex flex-column align-items-center'>
-        <div className='d-flex flex-column w-75 my-4'>
-            <label htmlFor="">Organizer Name</label>
-            <input className='border border-primary border-1 rounded shadow-sm' type="text" name="" id="" aria-label='' />
+        <div className='d-flex flex-column w-75 my-4 form-floating'>
+            <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingInput" id="floatingInput" aria-label='' placeholder='Organizer Name' />
+            <label htmlFor="floatingInput">Organizer Name</label>
           </div>
-        <div className='d-flex flex-column w-75 mb-4'>
-            <label htmlFor="">Event Name</label>
-            <input className='border border-primary border-1 rounded shadow-sm' type="text" name="" id="" aria-label='' />
+        <div className='d-flex flex-column w-75 mb-4 form-floating'>
+            <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingEvent" id="floatingEvent" aria-label='' placeholder='Event Name'/>
+            <label htmlFor="floatingEvent">Event Name</label>
         </div>
-        <div className='d-flex flex-column w-75 mb-4'>
-            <label htmlFor="">Event Description</label>
-            <input className='border border-primary border-1 rounded shadow-sm' type="text" name="" id="" aria-label='' />
+        <div className='d-flex flex-column w-75 mb-4 form-floating'>
+            <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingDesc" id="floatingDesc" aria-label='' placeholder='Event Description' />
+            <label htmlFor="floatingDesc">Event Description</label>
         </div>
-        <div className='d-flex flex-column w-75 mb-4'>
-            <label htmlFor="">Event Location</label>
-            <input className='border border-primary border-1 rounded shadow-sm' type="text" name="" id="" aria-label='' />
+        <div className='d-flex flex-column w-75 mb-4 form-floating'>
+            <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingLocation" id="floatingLocation" aria-label='' placeholder='Event Location' />
+            <label htmlFor="floatingLocation">Event Location</label>
         </div>
-        <div className='d-flex flex-column w-75 mb-4'>
-            <label htmlFor="">Event Date and time</label>
-            <input className='border border-primary border-1 rounded shadow-sm' type="text" name="" id="" aria-label='' />
+        <div className='d-flex flex-column w-75 mb-4 form-floating'>
+            <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingDate&Time" id="floatingDate&Time" aria-label='' placeholder='Event Date and Time' />
+            <label htmlFor="floatingDate&Time">Event Date and time</label>
         </div>
-        <div className='d-flex flex-column w-75 mb-4'>
-            <label htmlFor="">Event Cover Image</label>
-            <input className='border border-primary border-1 rounded shadow-sm' type="text" name="" id="" aria-label='' />
+        <div className='d-flex flex-column w-75 mb-4 form-floating'>
+            <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingCoverImg" id="floatingCoverImg" aria-label='' placeholder='Event Cover Image' />
+            <label htmlFor="floatingCoverImg">Event Cover Image</label>
         </div>
-        <div className='d-flex flex-column w-75 mb-4'>
-            <label htmlFor="">Event Type</label>
-            <input className='border border-primary border-1 rounded shadow-sm' type="text" name="" id="" aria-label='' />
+        <div className='d-flex flex-column w-75 mb-4 form-floating'>
+            <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingType" id="floatingType" aria-label='' placeholder='Event Type' />
+            <label htmlFor="floatingType">Event Type</label>
         </div>
-        <div className='d-flex flex-column w-75 mb-4'>
-            <label htmlFor="">Event Topic</label>
-            <input className='border border-primary border-1 rounded shadow-sm' type="text" name="" id="" aria-label='' />
+        <div className='d-flex flex-column w-75 mb-4 form-floating'>
+            <input className='border border-primary border-1 rounded shadow-sm form-control' type="text" name="floatingTopic" id="floatingTopic" aria-label='' placeholder='Event Topic' />
+            <label htmlFor="floatingTopic">Event Topic</label>
         </div>
         <div className='w-75 mb-4'>
             <label htmlFor="">Event Options</label>
