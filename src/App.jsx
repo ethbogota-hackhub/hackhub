@@ -18,32 +18,18 @@ const App = () => {
 
   return (
     <AppProvider>
-<<<<<<< HEAD
+      <ApolloProvider client={apolloClient}>
       <BrowserRouter>
         <Topbar />
         <Navbar />
-        <ConnectKitButton />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/organizer' element={<Organizer />} />
+          <Route path='/attendee' element={<UserSkills />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-=======
-      <ApolloProvider client={apolloClient}>
-        <BrowserRouter>
-          <Topbar />
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-          </Routes>
-
-          <Routes>
-            <Route path='/attendee' element={<UserSkills />} />
-          </Routes>
-        </BrowserRouter>
       </ApolloProvider>
->>>>>>> 908cf12f29a3830acd58e0d35a2f0a430a4dc374
     </AppProvider>
   )
 }
