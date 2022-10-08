@@ -21,7 +21,7 @@ const Topbar = () => {
                     <h5 className='mx-3'>Inicio</h5>
                 </Link>
 
-                <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
+                <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='/attendee' className='py-2 d-flex flex-inline'>
                     <AiFillHome color='black' size={25} />
                     <h5 className='mx-3'>Attendee</h5>
                 </Link>

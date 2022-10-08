@@ -19,9 +19,12 @@ const App = () => {
         <BrowserRouter>
           <Topbar />
           <Navbar />
-          <ConnectKitButton />
           <Routes>
             <Route path='/' element={<Home />} />
+          </Routes>
+
+          <Routes>
+            <Route path='/attendee' element={<UserSkills />} />
           </Routes>
         </BrowserRouter>
       </ApolloProvider>

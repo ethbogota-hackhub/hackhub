@@ -1,3 +1,5 @@
+import { ConnectKitButton } from 'connectkit';
+import { Modal } from "react-bootstrap";
 import { useState } from "react";
 import toast from 'react-hot-toast';
 
@@ -36,12 +38,25 @@ const LoginButton = () => {
         }
     };
 
+    /* <ConnectKitButton className="btn btn-primary rounded-pill px-3" /> */
+    /* <button className='btn btn-primary rounded-pill px-3'>
+        Connect Wallet
+    </button> */
     return (
-        <>
-            <button className='btn btn-primary rounded-pill px-3' onClick={handleSign}>
-                Sign Message
-            </button>
-        </>
+        <ConnectKitButton.Custom>
+            {({ isConnected, isConnecting, show, hide, address, ensName }) => {
+
+                return (
+                    !isConnected
+                        ? <button onClick={show} className="btn btn-primary rounded-pill px-3">
+                            {isConnected ? address : "Connect Wallet"}
+                        </button>
+                        : <button onClick={handleSign} className="btn btn-primary rounded-pill px-3">
+                            Lens Login
+                        </button>
+                );
+            }}
+        </ConnectKitButton.Custom>
     );
 }
 

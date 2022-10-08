@@ -15,7 +15,7 @@ const Navbar = () => {
                 </Link>
             </h1>
             <ul className='d-flex flex-row justify-content-end m-2'>
-                <Link to=''>
+                <Link to='/attendee'>
                     attendee
                 </Link>
 

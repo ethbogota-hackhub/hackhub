@@ -18,7 +18,10 @@ const client = createClient(
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <WagmiConfig client={client}>
-      <ConnectKitProvider theme="auto">
+      <ConnectKitProvider customTheme={{
+        "--ck-accent-color": "#00D54B",
+        "--ck-accent-text-color": "#ffffff",
+      }}>
         <App />
       </ConnectKitProvider>
     </WagmiConfig>
