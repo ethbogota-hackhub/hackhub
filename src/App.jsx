@@ -11,6 +11,7 @@ import Home from './views/Home';
 import UserSkills from './views/UserSkills';
 import Attendees from './views/Attendees';
 import Events from './views/Events';
+import { apolloClient } from './lib/apollo/apolloClient';
 
 import './styles/App.css';
 
@@ -25,11 +26,11 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home />} />
           </Routes>
-          
+
           <Routes>
             <Route path='/attendees' element={<Attendees />} />
           </Routes>
-          
+
           <Routes>
             <Route path='/events' element={<Events />} />
           </Routes>

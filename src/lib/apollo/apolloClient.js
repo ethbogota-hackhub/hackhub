@@ -8,6 +8,8 @@ import {
 import { onError } from '@apollo/client/link/error';
 import fetch from 'cross-fetch';
 // import { LENS_API } from './config';
+import { PROFILES_BY_ADDRESS } from './queries';
+
 
 const LENS_API = 'https://api-mumbai.lens.dev/';
 
@@ -60,3 +62,17 @@ export const apolloClient = new ApolloClient({
 	cache: new InMemoryCache(),
 	defaultOptions: defaultOptions,
 });
+
+
+export const getFirstProfileOwnedBy = async (address) => {
+	const result = await apolloClient.query({
+		query: PROFILES_BY_ADDRESS,
+		variables: {
+			ownedBy: address,
+		},
+	});
+
+	const profile = result.data.profiles.items[0];
+
+	return profile;
+};

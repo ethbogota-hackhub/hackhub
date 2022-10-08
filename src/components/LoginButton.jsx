@@ -4,8 +4,10 @@ import { useState } from "react";
 import toast from 'react-hot-toast';
 import { FiUserCheck } from 'react-icons/fi';
 
-import { useLazyQuery, useQuery, useMutation } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { CHALLENGE_QUERY, AUTHENTICATE_MUTATION } from '../lib/apollo/queries';
+import { getFirstProfileOwnedBy } from '../lib/apollo/apolloClient';
+import { getProfileImageURLFromProfileObject } from '../common/utils';
 import { useSignMessage, useAccount } from 'wagmi';
 import { Link } from 'react-router-dom';
 
@@ -35,6 +37,9 @@ const LoginButton = () => {
             // save auth token
             localStorage.setItem('accessToken', auth.data?.authenticate.accessToken);
             localStorage.setItem('refreshToken', auth.data?.authenticate.refreshToken);
+
+            const profile = await getFirstProfileOwnedBy(address);
+            const profilePictureUrl = getProfileImageURLFromProfileObject(profile);
         } catch (e) {
             console.log('>>>>>>>>>>error', e);
         }

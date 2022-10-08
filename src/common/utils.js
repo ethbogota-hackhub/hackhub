@@ -1,4 +1,4 @@
-export const scrollToTop = (value) => window.scrollTo({ behavior: 'smooth', top: value})
+export const scrollToTop = (value) => window.scrollTo({ behavior: 'smooth', top: value })
 
 export const removeItemStorage = (key) => {
     sessionStorage.removeItem(key);
@@ -14,7 +14,7 @@ export const getStorageValue = (key) => {
     const data = sessionStorage.getItem(key);
 
     if (!data) return null;
-    
+
     return JSON.parse(data);
 }
 
@@ -22,7 +22,7 @@ export const firstLetterUppercase = (value) => {
     if (!value) return '';
 
     const str = value.toString();
-    return `${ str.substr(0,1).toUpperCase() }${ str.substr(1, str.length).toLowerCase() }`
+    return `${str.substr(0, 1).toUpperCase()}${str.substr(1, str.length).toLowerCase()}`
 }
 
 export const dateFormat = (date) => {
@@ -32,7 +32,7 @@ export const dateFormat = (date) => {
 export const orderBy = (array, by) => {
     if (!array) return [];
 
-    if (by === 'date') 
+    if (by === 'date')
         return array.sort((a, b) => {
             if (new Date(a.date).getTime() > new Date(b.date).getTime()) return -1;
             else if (new Date(a.date).getTime() < new Date(b.date).getTime()) return 1;
@@ -43,4 +43,10 @@ export const orderBy = (array, by) => {
 
 export const round = (value, decimals) => {
     return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+}
+
+export function getProfileImageURLFromProfileObject(profile) {
+    const ipfsGateway = 'https://lens.infura-ipfs.io/ipfs/';
+    const profileUrl = ipfsGateway + (profile.picture.original.url || profile.picture.small.url || '').replace('ipfs://', '');
+    return profileUrl;
 }
