@@ -186,14 +186,17 @@ const UserSkills = () => {
 
                 <div className="pb-3">
                     <p className="mb-1"><span className="text-danger">*</span> How would you describe yourself?</p>
-                    <select {...register('userDescription', { required: true })} className={ `form-select ${ errors.userDescription ? 'is-invalid' : '' }` } name="option1">
+                    <select type="select"
+                        {...register('userDescription', { required: true })} 
+                        className={ `form-select ${ errors.userDescription ? 'is-invalid' : '' }` }>
                         { option1.map((opt, index) => <option key={ `${opt}${index}`} value={ opt }>{ opt }</option>) }
                     </select>
                 </div>
 
                 <div className="border-bottom pt-3 pb-5">
                     <p className="mb-1"><span className="text-danger">*</span> Spoken Language</p>
-                    <select {...register('spokenLanguage', { required: true })} className={ `form-select ${ errors.spokenLanguage ? 'is-invalid' : ''  }` } name="option2">
+                    <select type="select"
+                        {...register('spokenLanguage', { required: true })} className={ `form-select ${ errors.spokenLanguage ? 'is-invalid' : ''  }` } name="option2">
                         { option5.map((opt, index) => <option key={ `${opt}${index}`} value={ opt }>{ opt }</option>) }
                     </select>
                 </div>
@@ -202,21 +205,24 @@ const UserSkills = () => {
 
                 <div className="pb-3 ">
                     <p className="mb-1"><span className="text-danger">*</span> How do you plan to get involved?</p>
-                    <select {...register('attendeeAs', { required: true })} className={ `form-select ${ errors.attendeeAs ? 'is-invalid' : ''  }` } name="option3">
+                    <select type="select"
+                        {...register('attendeeAs', { required: true })} className={ `form-select ${ errors.attendeeAs ? 'is-invalid' : ''  }` } name="option3">
                         {  option2.map((opt, index) => <option key={ `${opt}${index}`} value={ opt }>{ opt }</option>) }
                     </select>
                 </div>
 
                 <div className="py-3">
                     <p className="mb-1"><span className="text-danger">*</span> Expertise with Ethereum</p>
-                    <select {...register('ethExperience', { required: true })} className={ `form-select ${ errors.ethExperience ? 'is-invalid' : ''  }` } name="option4">
+                    <select type="select"
+                        {...register('ethExperience', { required: true })} className={ `form-select ${ errors.ethExperience ? 'is-invalid' : ''  }` } name="option4">
                         {  option3.map((opt, index) => <option key={ `${opt}${index}`} value={ opt }>{ opt }</option>) }
                     </select>
                 </div>
                 
                 <div className="pt-3">
                     <p className="mb-1"><span className="text-danger">*</span> Programming Languages</p>
-                    <select {...register('mainLanguage', { required: true })} className={ `form-select ${ errors.mainLanguage ? 'is-invalid' : ''  }` } name="option5">
+                    <select type="select"
+                        {...register('mainLanguage', { required: true })} className={ `form-select ${ errors.mainLanguage ? 'is-invalid' : ''  }` } name="option5">
                         {  option4.map((opt, index) => <option key={ `${opt}${index}`} value={ opt }>{ opt }</option>) }
                     </select>
                 </div>
