@@ -1,6 +1,6 @@
 .home-title {
     font-size: 4rem;
-    margin: 3rem 0;
+    margin: 6rem 0;
 }
 
 .home-py-xl {
@@ -28,7 +28,7 @@
 
 @media only screen and (max-width: 575px) {
     .home-title {
-        margin: 0;
+        margin: 4rem 0;
     }
 
     .btn-join-us {
@@ -47,4 +47,8 @@
 
 .line-sm {
     line-height: 5rem;
+}
+
+.stack-img {
+    width: 100%!important;
 }

@@ -16,13 +16,12 @@
     padding: 1rem;
     text-decoration: none;
     color: #b5dd45;
-    background-color: #b5dd451e;
     border-radius: 1rem;
     transition: 250ms;
 }
 .navbar ul a:hover {
     color: #b5dd45;
-    background-color: #b5dd4544;
+    background-color: #9ec13d44;
     border-radius: 1rem;
     transition: 250ms;
 }
@@ -52,6 +51,19 @@
     border-radius: 50%;
     color: rgb(255, 255, 255);
     background-color: #b5dd45;
+}
+
+.btn-wallet {
+    color: #1b210a;
+    background-color: #b5dd4544;
+    border-radius: 1rem;
+    transition: 250ms;
+}
+.btn-wallet:hover {
+    color: #ffffff;
+    background-color: #647c23c4;
+    border-radius: 1rem;
+    transition: 250ms;
 }
 
 /* Mobile */

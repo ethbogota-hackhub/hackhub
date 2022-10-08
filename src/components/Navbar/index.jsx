@@ -2,6 +2,7 @@ import './index.css'
 import { Link } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useApp } from '../../hooks/useApp';
+import LoginButton from '../LoginButton';
 
 const Navbar = () => {
     const { setIsOpenTopbar } = useApp();
@@ -13,6 +14,17 @@ const Navbar = () => {
                     hackhub
                 </Link>
             </h1>
+            <ul className='d-flex flex-row justify-content-end m-2'>
+                <Link to=''>
+                    attendee
+                </Link>
+
+                <Link to=''>
+                    organizer
+                </Link>
+                
+                <LoginButton />
+            </ul>
 
             <div className='navbar-mobile'>
                 <div className='icon-menu me-3' onClick={() => setIsOpenTopbar(true)}>
