@@ -69,6 +69,11 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+            
+            <Footer />
+>>>>>>> f6e1fdcbd591d0d6e01d7dc553219d19cdf2993b
         </>
     );
 }

@@ -2,6 +2,7 @@ import './index.css'
 import { Link } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useApp } from '../../hooks/useApp';
+import { scrollToTop } from '../../common/utils';
 import LoginButton from '../LoginButton';
 
 const Navbar = () => {
@@ -15,15 +16,23 @@ const Navbar = () => {
                 </Link>
             </h1>
             <ul className='d-flex flex-row justify-content-end m-2'>
-                <Link to='/attendee'>
-                    attendee
+                <Link to='/attendees' onClick={() => scrollToTop(0)}>
+                    attendees
                 </Link>
 
+<<<<<<< HEAD
                 <Link to='/organizer'>
+=======
+                <Link to='/events' onClick={() => scrollToTop(0)}>
+                    events
+                </Link>
+
+                <Link to='' onClick={() => scrollToTop(0)}>
+>>>>>>> f6e1fdcbd591d0d6e01d7dc553219d19cdf2993b
                     organizer
                 </Link>
                 
-                <LoginButton />
+                <LoginButton onClick={() => scrollToTop(0)} />
             </ul>
 
             <div className='navbar-mobile'>
