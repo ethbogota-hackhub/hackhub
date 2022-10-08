@@ -20,15 +20,11 @@ const Navbar = () => {
                     attendees
                 </Link>
 
-<<<<<<< HEAD
-                <Link to='/organizer'>
-=======
                 <Link to='/events' onClick={() => scrollToTop(0)}>
                     events
                 </Link>
 
-                <Link to='' onClick={() => scrollToTop(0)}>
->>>>>>> f6e1fdcbd591d0d6e01d7dc553219d19cdf2993b
+                <Link to='/organizer' onClick={() => scrollToTop(0)}>
                     organizer
                 </Link>
                 
