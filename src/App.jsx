@@ -8,6 +8,8 @@ import Topbar from './components/Topbar';
 import Home from './views/Home';
 
 import './styles/App.css';
+import Organizer from './views/Organizer';
+import Footer from './components/Footer';
 
 const App = () => {
 
@@ -19,7 +21,9 @@ const App = () => {
         <ConnectKitButton />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/organizer' element={<Organizer />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </AppProvider>
   )

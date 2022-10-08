@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Footer from '../../components/Footer';
 import './index.css';
 
 const Home = () => {
@@ -70,7 +69,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }
