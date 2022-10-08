@@ -8,7 +8,7 @@ import Navbar from './components/Navbar';
 import Topbar from './components/Topbar';
 // views
 import Home from './views/Home';
-import UserSkills from './views/UserSkills';
+import UserProfile from './views/UserProfile';
 import Attendees from './views/Attendees';
 import Events from './views/Events';
 
@@ -24,18 +24,9 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
-          </Routes>
-
-          <Routes>
             <Route path='/attendees' element={<Attendees />} />
-          </Routes>
-
-          <Routes>
             <Route path='/events' element={<Events />} />
-          </Routes>
-
-          <Routes>
-            <Route path='/profile' element={<UserSkills />} />
+            <Route path='/profile' element={<UserProfile />} />
           </Routes>
         </BrowserRouter>
       </ApolloProvider>

@@ -43,7 +43,7 @@ const Events = () => {
 
         <div className='row mx-0 pt-3 d-flex justify-content-center'>
           { events.map(event => <div 
-              className='col-6 col-md-4 p-2'
+              className='col-6 col-md-4 p-2 grid-attendees'
               key={ `${ event.id }-${ event.name }` }>
               <div className='d-flex flex-column justify-content-center align-content-center shadow border p-4 h-100 card-attendees'>
                   <div className='d-flex justify-content-center'>

@@ -95,7 +95,7 @@ const Attendees = () => {
 
         <div className='row mx-0 pt-3 d-flex justify-content-center'>
           { attendees.map(attende => <div 
-              className='col-6 col-md-4 p-2'
+              className='col-6 col-md-4 p-2 grid-attendees'
               key={ `${ attende.id }-${ attende.name }` }>
               <div className='d-flex flex-column justify-content-center align-content-center shadow border p-4 h-100 card-attendees'>
                   <div className='d-flex justify-content-center'>
