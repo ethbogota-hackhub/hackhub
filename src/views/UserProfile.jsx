@@ -89,8 +89,7 @@ const UserProfile = () => {
         "Product Designer",
         "Product Manager",
         "UI/UX Designer",
-        "Visual Designer",
-        "Other (custom input)"
+        "Visual Designer"
     ]);
 
     const [option2,] = useState([
@@ -174,7 +173,7 @@ const UserProfile = () => {
         "Italian",
         "Swedish",
         "Gaelic",
-    ])
+    ]);
 
     const validateInputs = (data) => {
         let error = false;
