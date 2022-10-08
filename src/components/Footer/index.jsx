@@ -1,29 +1,32 @@
-import React from 'react'
-import { BsGithub, BsTwitter } from "react-icons/bs"
-import { RiCopyrightLine } from 'react-icons/ri'
-import lens from "../../assets/lens_Icon.jpg"
-import EthContribute from '../../assets/eth_contribute.jpg'
+import React from 'react';
+import { BsGithub } from "react-icons/bs";
+import { RiCopyrightLine } from 'react-icons/ri';
+// import lens from "../../assets/lens_Icon.jpg"
+import EthContribute from '../../assets/eth_contribute.jpg';
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer>
-      <div className='d-flex flex-column my-5'>
-        <h3 className='d-flex justify-content-center'>About Us</h3>
-        <div className='d-flex justify-content-center py-2'>
-          <BsGithub />
-          <img src={lens} alt="" className='rounded-circle h-25' />
-          <BsTwitter />
+      <div className='d-flex flex-column justify-content-center align-items-center py-4'>
+        <h6 className='mb-1'>About Us</h6>
+        <div>
+          <a href="https://github.com/ethbogota-hackhub/hackhub.git">
+            <BsGithub size={35} className="m-2" style={{ color: "#1c1b1b" }} />
+          </a>
+
+          <img src="/img/lens.png" alt="lens" width={45} />
         </div>
-        
       </div>
-      <div className='d-flex flex-column align-items-center my-5'>
-        <h3>Contribute</h3>
-        <img className='w-25' src={EthContribute} alt="" />
+
+      <div className='d-flex flex-column align-items-center py-4'>
+        <h6>Contribute</h6>
+        <img src={EthContribute} alt="" width="140px" />
       </div>
+
       <div className='d-flex justify-content-center my-4'>
         <RiCopyrightLine />
-        <p>All rigth reserved</p>
-        <strong className='px-1'>HackHub</strong>
+        <p>All rights reserved. <span className='fw-bold'>HackHub</span></p>
       </div>
     </footer>
   )
