@@ -11,7 +11,7 @@ const client = createClient(
     appName: 'My App Name',
     //infuraId: process.env.REACT_APP_INFURA_ID,
     //alchemyId:  process.env.REACT_APP_ALCHEMY_ID,
-    chains: [chain.mainnet, chain.polygon],
+    chains: [chain.polygonMumbai, chain.polygon],
   })
 );
 
