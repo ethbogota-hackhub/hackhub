@@ -38,10 +38,6 @@ const LoginButton = () => {
         }
     };
 
-    /* <ConnectKitButton className="btn btn-primary rounded-pill px-3" /> */
-    /* <button className='btn btn-primary rounded-pill px-3'>
-        Connect Wallet
-    </button> */
     return (
         <ConnectKitButton.Custom>
             {({ isConnected, isConnecting, show, hide, address, ensName }) => {

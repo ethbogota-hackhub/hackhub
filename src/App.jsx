@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Topbar from './components/Topbar';
 // views
 import Home from './views/Home';
+import UserSkills from './views/UserSkills';
 import { apolloClient } from './lib/apolloClient';
 
 import './styles/App.css';
