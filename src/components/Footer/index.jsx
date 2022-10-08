@@ -8,8 +8,8 @@ const Footer = () => {
   return (
     <footer>
       <div className='d-flex flex-column my-5'>
-        <p className='d-flex justify-content-center'>About Us</p>
-        <div className='d-flex justify-content-center py-3'>
+        <h3 className='d-flex justify-content-center'>About Us</h3>
+        <div className='d-flex justify-content-center py-4'>
           <BsGithub />
           <img src={lens} alt="" className='rounded-circle h-25' />
           <BsTwitter />
@@ -17,7 +17,7 @@ const Footer = () => {
         
       </div>
       <div className='d-flex flex-column align-items-center my-5'>
-        <p>Contribute</p>
+        <h3>Contribute</h3>
         <img src={EthContribute} alt="" />
       </div>
       <div className='d-flex justify-content-center my-4'>
