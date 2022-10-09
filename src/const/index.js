@@ -1224,3 +1224,87 @@ export const ROLE_CONST = [
     { value: "UI/UX Designer", label: "UI/UX Designer" },
     { value: "Visual Designer", label: "Visual Designer" }
   ];
+
+export const EVENTS_CONST = [
+	{
+		"eventId": "dc63dd33-9851-4f8c-95f9-408daf3aa9bf",
+		"eventName": "ETHBogota",
+		"eventDescription": "Join hackers from around the world to receive over $500,000 in prizes. Show your creativity and build something innovative!",
+		"eventLocation": "Bogota, Colombia",
+		"eventDate": "October 7-9, 2022",
+		"eventTime": "October 7 9:00pm - October 9 9:30am",
+		"imageUrl": "/img/lens.png",
+		"organizerName": "ETH Global"
+	},
+	{
+		"eventId": "dc63dd33-9851-4f8c-95f9-408daf3aa9c0",
+		"eventName": "ETHBogota",
+		"eventDescription": "Join hackers from around the world to receive over $500,000 in prizes. Show your creativity and build something innovative!",
+		"eventLocation": "Bogota, Colombia",
+		"eventDate": "October 7-9, 2022",
+		"eventTime": "October 7 9:00pm - October 9 9:30am",
+		"imageUrl": "/img/lens.png",
+		"organizerName": "ETH Global"
+	},
+	{
+		"eventId": "dc63dd33-9851-4f8c-95f9-408daf3aa9c1",
+		"eventName": "ETHBogota",
+		"eventDescription": "Join hackers from around the world to receive over $500,000 in prizes. Show your creativity and build something innovative!",
+		"eventLocation": "Bogota, Colombia",
+		"eventDate": "October 7-9, 2022",
+		"eventTime": "October 7 9:00pm - October 9 9:30am",
+		"imageUrl": "/img/lens.png",
+		"organizerName": "ETH Global"
+	},
+	{
+		"eventId": "dc63dd33-9851-4f8c-95f9-408daf3aa9c2",
+		"eventName": "ETHBogota",
+		"eventDescription": "Join hackers from around the world to receive over $500,000 in prizes. Show your creativity and build something innovative!",
+		"eventLocation": "Bogota, Colombia",
+		"eventDate": "October 7-9, 2022",
+		"eventTime": "October 7 9:00pm - October 9 9:30am",
+		"imageUrl": "/img/lens.png",
+		"organizerName": "ETH Global"
+	},
+	{
+		"eventId": "dc63dd33-9851-4f8c-95f9-408daf3aa9c3",
+		"eventName": "ETHBogota",
+		"eventDescription": "Join hackers from around the world to receive over $500,000 in prizes. Show your creativity and build something innovative!",
+		"eventLocation": "Bogota, Colombia",
+		"eventDate": "October 7-9, 2022",
+		"eventTime": "October 7 9:00pm - October 9 9:30am",
+		"imageUrl": "/img/lens.png",
+		"organizerName": "ETH Global"
+	},
+	{
+		"eventId": "dc63dd33-9851-4f8c-95f9-408daf3aa9c4",
+		"eventName": "ETHBogota",
+		"eventDescription": "Join hackers from around the world to receive over $500,000 in prizes. Show your creativity and build something innovative!",
+		"eventLocation": "Bogota, Colombia",
+		"eventDate": "October 7-9, 2022",
+		"eventTime": "October 7 9:00pm - October 9 9:30am",
+		"imageUrl": "/img/lens.png",
+		"organizerName": "ETH Global"
+	},
+	{
+		"eventId": "dc63dd33-9851-4f8c-95f9-408daf3aa9c5",
+		"eventName": "ETHBogota",
+		"eventDescription": "Join hackers from around the world to receive over $500,000 in prizes. Show your creativity and build something innovative!",
+		"eventLocation": "Bogota, Colombia",
+		"eventDate": "October 7-9, 2022",
+		"eventTime": "October 7 9:00pm - October 9 9:30am",
+		"imageUrl": "/img/lens.png",
+		"organizerName": "ETH Global"
+	}
+]
+
+export const EVENT_DETAILS_CONST = {
+	"eventId": "dc63dd33-9851-4f8c-95f9-408daf3aa9be",
+	"eventName": "ETHBogota",
+	"eventDescription": "Join hackers from around the world to receive over $500,000 in prizes. Show your creativity and build something innovative!",
+	"eventLocation": "Bogota, Colombia",
+	"eventDate": "October 7-9, 2022",
+	"eventTime": "October 7 9:00pm - October 9 9:30am",
+	"imageUrl": "/img/lens.png",
+	"organizerName": "ETH Global"
+}

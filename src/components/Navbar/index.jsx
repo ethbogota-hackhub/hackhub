@@ -17,15 +17,15 @@ const Navbar = () => {
             </h1>
             <ul className='d-flex flex-row justify-content-end m-2'>
                 <Link to='/attendees' onClick={() => scrollToTop(0)}>
-                    attendees
+                    Attendees
                 </Link>
 
                 <Link to='/events' onClick={() => scrollToTop(0)}>
-                    events
+                    Events
                 </Link>
 
                 <Link to='/organizer' onClick={() => scrollToTop(0)}>
-                    organizer
+                    Organizer
                 </Link>
                 
                 <LoginButton onClick={() => scrollToTop(0)} />

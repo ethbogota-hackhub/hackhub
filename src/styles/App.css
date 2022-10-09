@@ -67,6 +67,17 @@ background-color: #64713e;
   margin: 6rem 0;
 }
 
+/* EVENT */
+.container-event {
+  border-radius: 1.2rem;
+  background-color: rgb(33, 33, 33);
+  color: #fff;
+}
+
+.card-event-details {
+  padding: 1.5rem!important;
+}
+
 /* PROFILES */
 .profile-title {
   font-size: 4rem;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCalendar3, BsPlus } from "react-icons/bs";
+import { removeItemStorage } from "../common/utils";
 import Footer from '../components/Footer';
 
 const UserProfile = () => {
@@ -601,6 +602,7 @@ const UserProfile = () => {
                 { user && <>
                     <button type="button" className="btn btn-outline-primary btn-join-us rounded-pill m-2">Let's Talk</button>
                     <button type="button" className="btn btn-primary btn-join-us rounded-pill m-2"><BsPlus size={25} /> Follow</button>
+                    {/* <button type="button" className="btn btn-outline-danger btn-join-us rounded-pill m-2" onClick={ () => removeItemStorage('accessToken') }>Sign Out</button> */}
                 </>}
             </div>
         )        

@@ -32,8 +32,6 @@ const LoginButton = () => {
 
             // Auth user and set cookies
             const auth = await authenticate({ variables: { address, signature } });
-            console.log(auth);
-
 
             // save auth token
             setStorageValue('accessToken', auth.data?.authenticate.accessToken);
@@ -50,14 +48,17 @@ const LoginButton = () => {
         <ConnectKitButton.Custom>
             {({ isConnected, isConnecting, show, hide, address, ensName }) => {
                 const handleMetamaskSignIn = () => {
-                    if (!isConnected)
-                        return (<button onClick={show} className="btn btn-primary rounded-pill px-3">
+                    if (!isConnected) return (
+                        <button onClick={show} className="btn btn-primary rounded-pill px-3">
                             {isConnected ? address : "Connect Wallet"}
-                        </button>)
+                        </button>
+                    );
                     
-                    return (<button onClick={handleSign} className="btn btn-primary rounded-pill px-3">
+                    return (
+                        <button onClick={handleSign} className="btn btn-primary rounded-pill px-3">
                             Lens Login
-                        </button>);
+                        </button>
+                    );
                 }
 
                 const handleProfile = () => {
@@ -71,7 +72,9 @@ const LoginButton = () => {
                 }
 
                 return (
-                    handleMetamaskSignIn()
+                    !getStorageValue('accessToken')
+                    ? handleMetamaskSignIn()
+                    : handleProfile()
                 );
             }}
         </ConnectKitButton.Custom>

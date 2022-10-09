@@ -86,7 +86,7 @@ const Attendees = () => {
         </div>
       </div>
 
-      <div className='container-attendees container-sm border p-5 mb-5'>
+      <div className='container-attendees shadow container-sm border p-5 mb-5'>
         <div className='py-2 m-0'>
           <h4 className='mx-0 mt-0 mb-1 fw-bold'>Advanced Search</h4>
           <p className="mb-1">Programming Language(s)</p>

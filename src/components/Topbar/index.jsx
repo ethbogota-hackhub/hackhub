@@ -25,22 +25,22 @@ const Topbar = () => {
             <ul className='text-left'>
                 <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
                     <AiFillHome color='black' size={25} />
-                    <h5 className='mx-3'>inicio</h5>
+                    <h5 className='mx-3'>Inicio</h5>
                 </Link>
 
                 <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='/attendees' className='py-2 d-flex flex-inline'>
                     <FaUsers color='black' size={25} />
-                    <h5 className='mx-3'>attendees</h5>
+                    <h5 className='mx-3'>Attendees</h5>
                 </Link>
 
                 <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='/events' className='py-2 d-flex flex-inline'>
                     <MdOutlineEmojiEvents color='black' size={25} />
-                    <h5 className='mx-3'>events</h5>
+                    <h5 className='mx-3'>Events</h5>
                 </Link>
 
                 <Link onClick={() => { setIsOpenTopbar(false); scrollToTop(0); }} to='' className='py-2 d-flex flex-inline'>
                     <GoBook color='black' size={25} />
-                    <h5 className='mx-3'>organizer</h5>
+                    <h5 className='mx-3'>Organizer</h5>
                 </Link>
             </ul>
 

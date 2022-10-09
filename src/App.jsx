@@ -10,10 +10,10 @@ import Home from './views/Home';
 import UserProfile from './views/UserProfile';
 import Attendees from './views/Attendees';
 import Events from './views/Events';
+import EventDetails from './views/EventDetails';
 
 import './styles/App.css';
 import Organizer from './views/Organizer';
-import Footer from './components/Footer';
 
 const App = () => {
 
@@ -24,13 +24,15 @@ const App = () => {
           <Topbar />
           <Navbar />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/attendees' element={<Attendees />} />
-            <Route path='/events' element={<Events />} />
-            <Route path='/profile' element={<UserProfile />} />
-            <Route path='/organizer' element={<Organizer />} />
+            <Route path='' element={<Home />} />
+            <Route path='attendees' element={<Attendees />} />
+            <Route path='events'>
+              <Route path='' element={<Events />} />
+              <Route path='details' element={<EventDetails />}/>
+            </Route>
+            <Route path='profile' element={<UserProfile />} />
+            <Route path='organizer' element={<Organizer />} />
           </Routes>
-          <Footer />
         </BrowserRouter>
       </ApolloProvider>
     </AppProvider>
