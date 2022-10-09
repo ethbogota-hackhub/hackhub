@@ -13,6 +13,8 @@ import Attendees from './views/Attendees';
 import Events from './views/Events';
 
 import './styles/App.css';
+import Organizer from './views/Organizer';
+import Footer from './components/Footer';
 
 const App = () => {
 
@@ -27,7 +29,9 @@ const App = () => {
             <Route path='/attendees' element={<Attendees />} />
             <Route path='/events' element={<Events />} />
             <Route path='/profile' element={<UserProfile />} />
+            <Route path='/organizer' element={<Organizer />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </ApolloProvider>
     </AppProvider>

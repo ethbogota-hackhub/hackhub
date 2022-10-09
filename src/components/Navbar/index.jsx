@@ -24,7 +24,7 @@ const Navbar = () => {
                     events
                 </Link>
 
-                <Link to='' onClick={() => scrollToTop(0)}>
+                <Link to='/organizer' onClick={() => scrollToTop(0)}>
                     organizer
                 </Link>
                 
