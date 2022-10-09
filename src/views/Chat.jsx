@@ -1,6 +1,10 @@
+import { useState } from "react";
 import Footer from "../components/Footer";
 
 const Chat = () => {
+    const [mensajes, setMensaje] = useState([
+        
+    ])
     
     return (
         <div className="container-fluid px-0">
@@ -13,8 +17,8 @@ const Chat = () => {
             <div className='p-5'>
                 <div className='chat-card bgnd-secondary text-light p-5 shadow'>
                     <div className="chat-bgnd d-flex flex-column align-self-end">
-                        <div className="mensajes text-dark d-flex h-100 justify-content-end align-items-bottom">
-                            <p>Mensajes</p>
+                        <div className="mensajes p-3 text-dark d-flex h-100 justify-content-end align-items-bottom">
+                            
                         </div>
                         <div className="d-flex input-text w-100 text-dark mb-auto">
                             <div className="w-100 text-end">

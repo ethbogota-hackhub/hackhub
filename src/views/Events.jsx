@@ -105,7 +105,7 @@ const Events = () => {
         </div>
       </div>
 
-      <div className='container-attendees shadow container-sm border p-5 mb-5'>
+      {/* <div className='container-attendees shadow container-sm border p-5 mb-5'>
         <div className='py-2 m-0'>
           <h4 className='mx-0 mt-0 mb-1 fw-bold'>Advanced Search</h4>
           <p className="mb-1">Programming Language(s)</p>
@@ -130,7 +130,7 @@ const Events = () => {
         <div className='d-flex justify-content-center align-items-center mt-2'>
           <button type='button' onClick={onSubmit} className='btn rounded-pill btn-join-us btn-primary m-2'>Submit</button>
         </div>
-      </div>
+      </div> */}
 
       <div className="container-attendees container-sm border p-5">
         <h4 className='m-0 fw-bold'>Events</h4>
