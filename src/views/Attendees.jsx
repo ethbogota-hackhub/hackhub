@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useAccount } from 'wagmi';
 import Footer from '../components/Footer';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import { useNavigate } from 'react-router-dom';
 // import { useForm } from 'react-hook-form';
-import { scrollToTop } from "../common/utils";
+import { getProfileImageURLFromProfileObject, scrollToTop } from "../common/utils";
 import { SKILLS_CONST, ROLE_CONST } from '../const';
-import { useLazyQuery, useQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import { PROFILES_BY_HANDLES } from '../lib/apollo/queries';
 
 const Attendees = () => {
+  let navigate = useNavigate();
   const [error, setError] = useState(null);
   const [pagination, setPagination] = useState(8);
   const [personType, setPersonType] = useState([]);
@@ -20,7 +21,7 @@ const Attendees = () => {
 
   useEffect(() => {
     getAttendees().then((res) => {
-      console.log(res.data.profiles.items);
+      // console.log(res.data.profiles.items);
       setAttendees(res.data.profiles.items);
     });
   }, []);
@@ -73,6 +74,38 @@ const Attendees = () => {
 
   const clearValues = () => { setError(null); setPagination(8); }
 
+  const handlePictureUrl = ({ profile }) => {
+    if (!profile.picture) return '/img/unknown.png';
+
+    if (profile?.picture.original.url.includes('ipfs://')) {
+      return getProfileImageURLFromProfileObject(profile);
+    }
+
+    return profile?.picture.original.url;
+  }
+
+  const handleUserCard = (attende) => {
+    return (
+      <div
+        className='col-6 col-md-4 p-2 grid-attendees'
+        key={`${attende.id}-${attende.name}`}>
+        <div onClick={() => onShowUserProfile({ profile: attende })}
+          className='d-flex flex-column justify-content-center align-content-center shadow border p-4 h-100 card-attendees'>
+          <div className='d-flex justify-content-center'>
+            <img src={ handlePictureUrl({ profile: attende }) } alt={attende.name} height="100px" width="100px" className='border rounded-circle' />
+          </div>
+          <h6 className='text-center fw-bold mb-0 mt-2'>{attende.name} {attende.last}</h6>
+          <p className='m-0 text-center' style={{ fontSize: "0.8rem" }}>{attende.role}</p>
+        </div>
+      </div>
+    );
+  }
+
+  const onShowUserProfile = ({ profile }) => {
+    navigate('/profile', { state: { ...profile } });
+    scrollToTop(0);
+  }
+
   return (
     <div className='container-fluid'>
       <div className="row mx-0">
@@ -117,17 +150,7 @@ const Attendees = () => {
         <h4 className='m-0 fw-bold'>Attendees</h4>
 
         <div className='row mx-0 pt-2 d-flex justify-content-center'>
-          {attendees.map((attende, index) => index < pagination && <div
-            className='col-6 col-md-4 p-2 grid-attendees'
-            key={`${attende.id}-${attende.name}`}>
-            <div className='d-flex flex-column justify-content-center align-content-center shadow border p-4 h-100 card-attendees'>
-              <div className='d-flex justify-content-center'>
-                <img src={attende.picture.original.url} alt={attende.name} height="100px" width="100px" className='border rounded-circle' />
-              </div>
-              <h6 className='text-center fw-bold mb-0 mt-2'>{attende.name} {attende.last}</h6>
-              <p className='m-0 text-center' style={{ fontSize: "0.8rem" }}>{attende.role}</p>
-            </div>
-          </div>)}
+          {attendees.map((attende, index) => index < pagination && handleUserCard(attende))}
         </div>
 
         {attendees.length > pagination &&

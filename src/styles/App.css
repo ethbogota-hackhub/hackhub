@@ -79,6 +79,22 @@ background-color: #64713e;
 }
 
 /* PROFILES */
+.profile-pic {
+  width: 45px!important;
+  height: 45px!important;
+  cursor: pointer;
+  transition: 450ms;
+}
+.profile-pic:hover {
+  opacity: 70%;
+  transition: 450ms;
+}
+
+.profile-pic-big {
+  width: 190px!important;
+  height: 190px!important;
+}
+
 .profile-title {
   font-size: 4rem;
 }

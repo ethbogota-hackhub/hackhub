@@ -1,78 +1,16 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCalendar3, BsPlus } from "react-icons/bs";
-import { removeItemStorage } from "../common/utils";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getStorageValue, removeItemStorage, validateUserPicUrl } from "../common/utils";
 import Footer from '../components/Footer';
 
 const UserProfile = () => {
+    const navigate = useNavigate();
+    const { state } = useLocation();
     const { register, formState: { errors }, setError, clearErrors, handleSubmit } = useForm();
-    const [user,] = useState({
-        "id": "0x01",
-        "name": "LensProtocol.eth 🌿",
-        "bio": "A permissionless, composable, & decentralized social graph that makes building a Web3 social platform easy.",
-        "attributes": [
-            {
-            "displayType": null,
-            "traitType": "string",
-            "key": "location",
-            "value": "Developer Garden"
-            },
-            {
-            "displayType": null,
-            "traitType": "string",
-            "key": "website",
-            "value": "https://lens.dev/"
-            },
-            {
-            "displayType": null,
-            "traitType": "string",
-            "key": "twitter",
-            "value": "lensprotocol"
-            },
-            {
-            "displayType": null,
-            "traitType": "boolean",
-            "key": "isBeta",
-            "value": "true"
-            },
-            {
-            "displayType": null,
-            "traitType": "string",
-            "key": "app",
-            "value": "Lenster"
-            }
-        ],
-        "followNftAddress": "0x5832bE646A8a7A1A7a7843efD6B8165aC06e360D",
-        "metadata": "ipfs://QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX",
-        "isDefault": false,
-        "picture": {
-            "original": {
-            "url": "https://lens.xyz/static/media/lensfrens.2f28dc59c1c3058c6d170c5c6a5fecca.svg",
-            "mimeType": null
-            },
-            "__typename": "MediaSet"
-        },
-        "handle": "lensprotocol.test",
-        "coverPicture": {
-            "original": {
-            "url": "https://ipfs.infura.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS",
-            "mimeType": null
-            },
-            "__typename": "MediaSet"
-        },
-        "ownedBy": "0x6C77a5a88C0AE712BAeABE12FeA81532060dcBf5",
-        "dispatcher": null,
-        "stats": {
-            "totalFollowers": 2103,
-            "totalFollowing": 0,
-            "totalPosts": 2,
-            "totalComments": 0,
-            "totalMirrors": 0,
-            "totalPublications": 2,
-            "totalCollects": 1354
-        },
-        "followModule": null
-    });
+    const [user,] = useState(state);
+    const [userLogged,] = useState(getStorageValue('profile'));
     const [transError, setTransError] = useState('');
     const [update, setUpdate] = useState(false);
 
@@ -566,6 +504,12 @@ const UserProfile = () => {
         );
     }
 
+    const onSignOut = () => {
+        removeItemStorage('refreshToken');
+        removeItemStorage('accessToken');
+        navigate('/');
+    }
+
     const handleTitle = () => {
         if (!user)
             return <h1 className="home-title ps-5">Complete some <span className="fw-bold">basic info</span></h1>
@@ -595,14 +539,14 @@ const UserProfile = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className="mb-4">
                     <h6 className="fw-bold">bio:</h6>
                     <p className="mb-1">{ user.bio }</p>
                 </div>
-                { user && <>
+                { user.id !== userLogged.id && <>
                     <button type="button" className="btn btn-outline-primary btn-join-us rounded-pill m-2">Let's Talk</button>
                     <button type="button" className="btn btn-primary btn-join-us rounded-pill m-2"><BsPlus size={25} /> Follow</button>
-                    {/* <button type="button" className="btn btn-outline-danger btn-join-us rounded-pill m-2" onClick={ () => removeItemStorage('accessToken') }>Sign Out</button> */}
+                    {/* <button type="button" className="btn btn-outline-danger btn-join-us rounded-pill m-2" onClick={ onSignOut }>Sign Out</button> */}
                 </>}
             </div>
         )        
@@ -615,7 +559,7 @@ const UserProfile = () => {
                     { handleTitle() }
                 </div>
                 <div className="col-12 col-md-4 pb-5 d-flex justify-content-center align-items-center">
-                    <img src="/img/user.png" alt="networking" width="190px" />
+                    <img src={ validateUserPicUrl(user) } alt="networking" className="rounded-circle border shadow profile-pic-big" />
                 </div>
             </div>
 
@@ -686,7 +630,7 @@ const UserProfile = () => {
                     </select>
                 </div>
 
-                { user && ( 
+                { user.id === userLogged.id && ( 
                 <div className="pt-4 d-flex justify-content-center align-items-center">
                     {   update ?
                         <>

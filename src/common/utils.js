@@ -50,3 +50,13 @@ export function getProfileImageURLFromProfileObject(profile) {
     const profileUrl = ipfsGateway + (profile.picture.original.url || profile.picture.small.url || '').replace('ipfs://', '');
     return profileUrl;
 }
+
+export const validateUserPicUrl = (profile) => {
+    if (!profile.picture) return '/img/unknown.png';
+
+    if (profile.picture.original.url.includes('ipfs://')) {
+      return getProfileImageURLFromProfileObject(profile);
+    }
+
+    return profile?.picture.original.url;
+} 

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { getStorageValue, removeItemStorage } from "../common/utils";
+import { useState } from "react";
 import { MdLocationOn } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const EventDetails = () => {
-    const [event,] = useState(getStorageValue('eventDetails'));
+    const { state } = useLocation();
+    const [event,] = useState(state);
 
     return (
         <div className="container-fluid">
@@ -50,7 +51,7 @@ const EventDetails = () => {
                     <p>$ 0.00</p>
                 </div>
                 <div>
-                    <button className="btn btn-primary btn-join-us p-2">See attendees</button>
+                    <button className="btn btn-primary btn-join-us rounded-pill p-2">See attendees</button>
                 </div>
             </div>
 

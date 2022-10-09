@@ -9,10 +9,12 @@ import { CHALLENGE_QUERY, AUTHENTICATE_MUTATION } from '../lib/apollo/queries';
 import { getFirstProfileOwnedBy } from '../lib/apollo/apolloClient';
 import { getProfileImageURLFromProfileObject, getStorageValue, setStorageValue } from '../common/utils';
 import { useSignMessage, useAccount } from 'wagmi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginButton = () => {
-    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [userLogged, setUserLogged] = useState(false);
+    const [userPictureUrl, setUserPictureUrl] = useState(false);
+    let navigate = useNavigate();
 
     const { signMessageAsync, isLoading: signLoading } = useSignMessage();
     const { address, connector } = useAccount();
@@ -38,11 +40,18 @@ const LoginButton = () => {
             setStorageValue('refreshToken', auth.data?.authenticate.refreshToken);
 
             const profile = await getFirstProfileOwnedBy(address);
+            setUserLogged(profile);
+            setStorageValue('profile', profile);
             const profilePictureUrl = getProfileImageURLFromProfileObject(profile);
+            setUserPictureUrl(profilePictureUrl);
         } catch (e) {
             console.log('>>>>>>>>>>error', e);
         }
     };
+
+    const onShowProfile = () => {
+        navigate('profile', { state: {...userLogged} });
+    }
 
     return (
         <ConnectKitButton.Custom>
@@ -63,10 +72,8 @@ const LoginButton = () => {
 
                 const handleProfile = () => {
                     return (
-                        <div className='d-flex justify-content-center align-items-center'>
-                            <Link to="/profile" className='btn btn-sm btn-primary rounded-circle p-1'>
-                                <FiUserCheck size={25} className="m-2" style={{ color: '#fff' }}/>
-                            </Link>
+                        <div className='d-flex justify-content-center align-items-center m-2'>
+                            <img src={ userPictureUrl ?? '' } alt="myprofile" className="profile-pic rounded-circle" onClick={ onShowProfile } />
                         </div>
                     );
                 }

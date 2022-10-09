@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { scrollToTop, setStorageValue } from "../common/utils";
+import { scrollToTop } from "../common/utils";
 import { SKILLS_CONST, ROLE_CONST } from '../const';
 import { ORG_WHITELIST } from '../const/whitelist';
 import { useNavigate } from 'react-router-dom';
@@ -84,8 +84,7 @@ const Events = () => {
   }
 
   const onShowEventDetails = (event) => {
-    setStorageValue('eventDetails', event);
-    navigate('/events/details');
+    navigate('/events/details', { state: {...event}});
     scrollToTop(0);
   }
 
@@ -137,7 +136,9 @@ const Events = () => {
         <h4 className='m-0 fw-bold'>Events</h4>
 
         <div className='row mx-0 pt-2 d-flex justify-content-center'>
-          {events.map((event, index) => index < pagination && <div
+          { events === null
+            ? <>Loading...</>
+            : events.map((event, index) => index < pagination && <div
             className='col-6 col-md-4 p-2 grid-attendees'
             key={`${event.eventId}-${event.eventName}`}>
             <div onClick={() => onShowEventDetails(event)}
