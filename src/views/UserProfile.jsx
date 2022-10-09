@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { BsCalendar3, BsPlus } from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getStorageValue, removeItemStorage, validateUserPicUrl, sendMessage } from "../common/utils";
+import { getStorageValue, removeItemStorage, validateUserPicUrl, sendMessage, scrollToTop } from "../common/utils";
 import Footer from '../components/Footer';
 import ModalCustom from '../components/Modal';
 
@@ -519,6 +519,7 @@ const UserProfile = () => {
     const onSignOut = () => {
         removeItemStorage('refreshToken');
         removeItemStorage('accessToken');
+        scrollToTop(0);
         navigate('/');
     }
 
@@ -575,7 +576,7 @@ const UserProfile = () => {
                             <button type="button" onClick={ onSendMessage } className="btn btn-sm btn-primary mx-2">Aceptar</button>
                         </div>
                     } />
-                    {/* <button type="button" className="btn btn-outline-danger btn-join-us rounded-pill m-2" onClick={ onSignOut }>Sign Out</button> */}
+                    { user?.id === userLogged?.id && <button type="button" className="btn btn-outline-primary btn-join-us rounded-pill m-2">Upload CV</button> }
                 </>}
             </div>
         )        
@@ -670,7 +671,11 @@ const UserProfile = () => {
                         <button className="btn btn-primary m-2" onClick={() => setUpdate(true)} type="button">Update</button>
                     }
                 </div>
-                )}      
+                )}
+
+                <div className="w-100 text-center">
+                    <button type="button" className="btn btn-outline-danger btn-join-us rounded-pill mt-3 mx-2" onClick={ onSignOut }>Sign Out</button>   
+                </div>
             </form>
 
             <Footer />
