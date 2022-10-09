@@ -17,6 +17,7 @@ const UserProfile = () => {
     const [update, setUpdate] = useState(false);
     const [show, setShow] = useState(false);
     const [modalProps, setModalProps] = useState(null);
+    const [tempSMS, setTempSMS] = useState('')
 
     const onSendMessage = () => {
         const response = sendMessage((userLogged?.handle ? userLogged.handle : 'Anonymous'), refMessage.current.value, user?.ownedBy);
@@ -576,8 +577,18 @@ const UserProfile = () => {
                             <button type="button" onClick={ onSendMessage } className="btn btn-sm btn-primary mx-2">Aceptar</button>
                         </div>
                     } />
-                    { user?.id === userLogged?.id && <button type="button" className="btn btn-outline-primary btn-join-us rounded-pill m-2">Upload CV</button> }
                 </>}
+                { user?.id === userLogged?.id && 
+                <>
+                    {/* <p className="ms-4 mb-0"></p> */}
+                    <button type="button" className="btn btn-primary btn-join-us rounded-pill ms-0 me-2" onClick={ () => {
+                        setTempSMS('This function will be available soon!!');
+                        setTimeout(() => {
+                            setTempSMS('');
+                        }, 8000);
+                    } }>Send Rewards</button>
+                    <p className="fw-bold fst-italic text-success">{ tempSMS }</p>
+                </> }
             </div>
         )        
     }
