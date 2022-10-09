@@ -5,7 +5,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 // import { useForm } from 'react-hook-form';
 import { scrollToTop } from "../common/utils";
-import { ATTENDEES_CONST, SKILLS_CONST, ROLE_CONST } from '../const';
+import { SKILLS_CONST, ROLE_CONST } from '../const';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { PROFILES_BY_HANDLES } from '../lib/apollo/queries';
 
