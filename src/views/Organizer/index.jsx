@@ -4,12 +4,7 @@ import organizer from '../../assets/organizer.svg'
 
 
 const Organizer = () => {
-  const [ paymentMethod ] = useState([
-    'Polygon (10.08)',
-    'Optimism (12)',
-    'Ethereum (0.002)',
-    'DAI (22)',
-  ])
+  const [ open, setOpen] = useState(false)
   const { register, watch, handleSubmit, formState: { errors } } = useForm()
   
   const onSubmit = data => {
@@ -18,6 +13,10 @@ const Organizer = () => {
     } catch (err) {
       console.error(err)
     }
+  }
+
+  const handleClick = () => {
+    open ? setOpen(!open) : setOpen(!open)
   }
 
   return (
@@ -35,7 +34,7 @@ const Organizer = () => {
             <label htmlFor="floatingEvent">Event Name</label>
         </div>
         <div className='d-flex flex-column w-75 mb-4 form-floating'>
-            <input type="text" name="floatingDesc" {...register("eventDescription", { required: true })} className={`border border-primary border-1 rounded shadow-sm form-control ${ errors.eventDescription ? 'is-invalid' && 'border-danger' : 'border-success' }`} id="floatingDesc" aria-label='' placeholder='Event Description' />
+            <textarea type="text" name="floatingDesc" {...register("eventDescription", { required: true })} className={`text-wrap border border-primary border-1 rounded shadow-sm form-control ${ errors.eventDescription ? 'is-invalid' && 'border-danger' : 'border-success' }`} id="floatingDesc" aria-label='' placeholder='Event Description' />
             <label htmlFor="floatingDesc">Event Description</label>
         </div>
         <div className='d-flex flex-column w-75 mb-4 form-floating'>
@@ -43,12 +42,12 @@ const Organizer = () => {
             <label htmlFor="floatingLocation">Event Location</label>
         </div>
         <div className='d-flex flex-column w-75 mb-4 form-floating'>
-            <input type="text" name="floatingDate&Time" {...register("eventDateAndTime", { required: true })} className={`border border-primary border-1 rounded shadow-sm form-control ${ errors.eventDateAndTime ? 'is-invalid' && 'border-danger' : 'border-success' }`} id="floatingDate&Time" aria-label='' placeholder='Event Date and Time' />
+            <input type="datetime-local" name="floatingDate&Time" {...register("eventDateAndTime", { required: true })} className={`border border-primary border-1 rounded shadow-sm form-control ${ errors.eventDateAndTime ? 'is-invalid' && 'border-danger' : 'border-success' }`} id="floatingDate&Time" aria-label='' placeholder='Event Date and Time' />
             <label htmlFor="floatingDate&Time">Event Date and time</label>
         </div>
-        <div className='d-flex flex-column w-75 mb-4 form-floating'>
-            <input type="text" name="floatingCoverImg" {...register("eventCover", { required: true })} className={`border border-primary border-1 rounded shadow-sm form-control ${ errors.eventCover ? 'is-invalid'  && 'border-danger' : 'border-success' }`} id="floatingCoverImg" aria-label='' placeholder='Event Cover Image' />
-            <label htmlFor="floatingCoverImg">Event Cover Image</label>
+        <div className='d-flex flex-column w-75 mb-4'>
+            <label htmlFor="image">Event Cover Image</label>
+            <input type="file" name="image" {...register("eventCover", { required: true })} className={`border border-primary border-1 rounded shadow-sm ${ errors.eventCover ? 'is-invalid'  && 'border-danger' : 'border-success' }`} id="floatingCoverImg" aria-label='' placeholder='Event Cover Image' />
         </div>
         <div className='d-flex flex-column w-75 mb-4 form-floating'>
             <input type="text" name="floatingType" {...register("eventType", { required: true })} className={`border border-primary border-1 rounded shadow-sm form-control ${ errors.eventType ? 'is-invalid' && 'border-danger' : 'border-success' }`} id="floatingType" aria-label='' placeholder='Event Type' />
@@ -60,37 +59,25 @@ const Organizer = () => {
         </div>
         <div className='w-75 mb-4'>
             <label htmlFor="">Event Options</label>
-            <div className='d-flex justify-content-evenly'>
-              <div>
-                <input type="checkbox" name="paid" {...register("paidEvents", { required: true})} id="paid" aria-label='' />
-                <label htmlFor="paid" className='px-2'>Paid Events</label>
-              </div>
+            <div>
               <div>
                 <input type="checkbox" name="free" {...register("freeEvents", { required: true})} id="free" aria-label='' />
                 <label htmlFor="free" className='px-2'>Free Events</label>
               </div>
             </div>
         </div>
-        <div className='mb-4 w-75'>
-          <p className="mb-1">Token Prices</p>
-          <select name="option5"
-              type="select"
-              {...register('paymentMethod', { required: true })} 
-              className={ `form-select ${ errors.paymentMethod ? 'is-invalid' : ''  }` }>
-              {  paymentMethod.map((opt, index) => <option key={ `${opt}${index}`} value={ opt }>{ opt }</option>) }
-          </select>
-          </div>
           <div className='mb-4 w-75'>
             <label htmlFor="">Ticket Options</label>
-            <div>
-              <input type="checkbox" name="limited" {...register("limitedTickets", { required: true })} id="limited" aria-label='' />
+            <div className='d-flex align-items-center'>
+              <input type="checkbox" name="limited" {...register("limitedTickets", { required: true })} onClick={handleClick} id="limited" aria-label=''  />
               <label htmlFor="limited" className='px-2'>Limited Tickets</label>
+              {open ? <p className='fs-5 py-10'>There are 10 tickets available</p> : <></>}
             </div>
           </div>
             <div className='w-75 mb-4'>
-              <h3>Terms and conditions</h3>
+              <h5>Terms and conditions</h5>
               <div>
-                <input type="checkbox" name="terms" {...register("termsAndConditions")}  className='red' id="terms" aria-label='' />
+                <input type="checkbox" name="terms" {...register("termsAndConditions")} className='red' id="terms" aria-label='' />
                 <label htmlFor="terms" className='px-2'>By creating and event, I agree to the policies and terms of use.</label>
               </div>
             </div>
