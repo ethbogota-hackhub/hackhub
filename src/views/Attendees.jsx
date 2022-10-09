@@ -1,25 +1,30 @@
 import { useState } from 'react';
-import { useAccount } from 'wagmi';
+// import { useAccount } from 'wagmi';
 import Footer from '../components/Footer';
-import { useForm } from 'react-hook-form';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+// import { useForm } from 'react-hook-form';
 import { scrollToTop } from "../common/utils";
 import { ATTENDEES_CONST, SKILLS_CONST, ROLE_CONST } from '../const';
 
 const Attendees = () => {
-  const { register, handleSubmit } = useForm();
   const [error, setError] = useState(null);
   const [pagination, setPagination] = useState(8);
+  const [personType, setPersonType] = useState([]); 
+  const [mainLanguage, setMainLanguage] = useState([]); 
 
-  const { address, connector } = useAccount();
+  // const { address, connector } = useAccount();
   const [attendees,] = useState(ATTENDEES_CONST);
 
-  const onSubmit = (/*{ skills = [], roles = [] }*/) => {
-
-    const roles = ['Backend Engineer', 'Frontend Engineer'];
-    const skills = ['JavaScript'];
-
+  const onSubmit = () => {
     try {
       setError(null);
+
+      if (mainLanguage?.length === 0 && personType?.length === 0) 
+        return setError('You must select at least one value to do a search');
+        
+      const skills = mainLanguage.map(lang => lang.value);
+      const roles = personType.map(pers => pers.value);
 
       const filteredAttendees = attendees.filter(attendee => {
         // get attendee's skills
@@ -43,26 +48,28 @@ const Attendees = () => {
         const someRoleMatch = roles.some(role => attendeeRoleArrayTrimmed.includes(role));
 
         if (someSkillMatch && someRoleMatch) {
-          console.log("match", attendee);
+          // console.log("match", attendee);
           return attendee;
         }
         else setError('No results found');
       });
 
       if (filteredAttendees.length === 0) return setError('No results found');
-
+   
+      console.log(filteredAttendees)
     } catch (e) {
       console.log(e);
     }
-  };
+  }
 
+  const clearValues = () => { setError(null); setPagination(8); }
+  
   return (
     <div className='container-fluid'>
       <div className="row mx-0">
         <div className="col-12 col-md-8">
-          <h1 className="home-title ps-3">
-            Find your teammate. <span className="fw-bold">Build your team.</span>
-          </h1>
+            <h1 className="home-title mb-0 ps-3">Find your teammate.</h1>
+            <h1 className="home-title mt-2 ps-3 fw-bold">Build your team.</h1>
         </div>
 
         <div className="col-12 col-md-4 pb-5 d-flex justify-content-center align-items-center">
@@ -70,47 +77,32 @@ const Attendees = () => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)}
-        className='container-attendees container-sm border p-5 mb-5'>
-
-        <div className='py-2 m-0'>
-          <p className="mb-1">What type of individual are you looking for?</p>
-          <select
-            type="select"
-            {...register('attendeeAs')}
-            className="form-select">
-            {ROLE_CONST.map((opt, index) => <option key={`${opt}${index}`} value={opt}>{opt}</option>)}
-          </select>
-        </div>
-
+      <div className='container-attendees container-sm border p-5 mb-5'>
         <div className='py-2 m-0'>
           <h4 className='mx-0 mt-0 mb-1 fw-bold'>Advanced Search</h4>
-          <p className="mb-1">Skill(s)</p>
-          <select
-            type="select"
-            {...register('mainLanguage')}
-            className="form-select">
-            {SKILLS_CONST.map((opt, index) => <option key={`${opt}${index}`} value={opt}>{opt}</option>)}
-          </select>
+          <p className="mb-1">Programming Language(s)</p>
+          <Select
+            isMulti
+            onChange={(e) => { setError(null); setMainLanguage(e); }}
+            components={ makeAnimated() } 
+            options={ SKILLS_CONST } />
         </div>
 
-        {/* <div className='py-2 m-0'>
-          <p className="mb-1">Spoken Language</p>
-          <select
-            type="select"
-            {...register('spokenLanguage', { required: true })}
-            className="form-select">
-            {option5.map((opt, index) => <option key={`${opt}${index}`} value={opt}>{opt}</option>)}
-          </select>
-        </div> */}
+        <div className='py-2 m-0'>
+          <p className="mb-1">What type of individual are you looking for?</p>          
+          <Select
+            isMulti
+            onChange={(e) => { setError(null); setPersonType(e) }}
+            components={ makeAnimated() } 
+            options={ ROLE_CONST } />
+        </div>
 
         {error && <div className='m-2 text-center text-danger'>{error}</div>}
 
         <div className='d-flex justify-content-center align-items-center mt-2'>
-          <button type='reset' onClick={() => { setError(null); setPagination(8); }} className='btn rounded-pill btn-join-us btn-outline-primary m-2'>reset</button>
-          <button type='submit' className='btn rounded-pill btn-join-us btn-primary m-2'>submit</button>
+          <button type='button' onClick={ onSubmit } className='btn rounded-pill btn-join-us btn-primary m-2'>Submit</button>
         </div>
-      </form>
+      </div>
 
       <div className="container-attendees container-sm border p-5">
         <h4 className='m-0 fw-bold'>Attendees</h4>
@@ -135,7 +127,7 @@ const Attendees = () => {
       </div>
 
       <div className='container-fluid text-center'>
-        <button type='button' className='btn btn-outline-primary me-3 mt-3' onClick={() => scrollToTop(0)}>Go up</button>
+        <button type='button' className='btn btn-outline-primary me-3 mt-3' onClick={() => { scrollToTop(0); clearValues(); }}>Go up</button>
       </div>
 
       <Footer />
