@@ -116,7 +116,7 @@ query Profiles ($ownedBy: EthereumAddress!) {
 
 export const PROFILES_BY_HANDLES = gql`
 query Profiles {
-  profiles(request: { profileIds: ["0x06", "0x15", "0x16", "0x18", "0x49e3", "0x49fd", "0x0588", "0x0282", "0x0528", "0x41cd"], limit: 15 }) {
+  profiles(request: { profileIds: ["0x4a1d", "0x15", "0x16", "0x18", "0x49e3", "0x49fd", "0x0588", "0x0282", "0x0528", "0x41cd"], limit: 15 }) {
     items {
       id
       name
