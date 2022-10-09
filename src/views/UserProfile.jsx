@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { BsCalendar3, BsPlus } from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getStorageValue, removeItemStorage, validateUserPicUrl } from "../common/utils";
+import { getStorageValue, removeItemStorage, validateUserPicUrl, sendMessage } from "../common/utils";
 import Footer from '../components/Footer';
+import ModalCustom from '../components/Modal';
 
 const UserProfile = () => {
-    const navigate = useNavigate();
+    const refMessage = useRef();
+    let navigate = useNavigate();
     const { state } = useLocation();
     const { register, formState: { errors }, setError, clearErrors, handleSubmit } = useForm();
     const [user,] = useState(state);
     const [userLogged,] = useState(getStorageValue('profile'));
     const [transError, setTransError] = useState('');
     const [update, setUpdate] = useState(false);
+    const [show, setShow] = useState(false);
+    const [modalProps, setModalProps] = useState(null);
+
+    const onSendMessage = () => {
+        const response = sendMessage((userLogged?.handle ? userLogged.handle : 'Anonymous'), refMessage.current.value, user?.ownedBy);
+
+        handleClose();
+    }
+    
+    const handleClose = () => setShow(false);
 
     const [option1,] = useState([
         "Select...",
@@ -517,35 +529,52 @@ const UserProfile = () => {
         return (
             <div className="ps-2 mb-5">
                 <h1 className="profile-title mt-5 mb-1">
-                    { user.name }   
+                    { user?.handle ? user?.handle : '' }   
                 </h1>
 
                 <div className="row mx-0 mb-3 stats-profile">
                     <div className="col-3 d-flex flex-column justify-content-center align-items-center p-2 border-end">
                         <h6 className="m-0 fw-bold">Followers</h6>
-                        <p className="m-0">{ user.stats.totalFollowers }</p>
+                        <p className="m-0">{ user.stats?.totalFollowers ? user.stats?.totalFollowers : 0 }</p>
                     </div>
                     <div className="col-3 d-flex flex-column justify-content-center align-items-center p-2">
                         <h6 className="m-0 fw-bold">Following</h6>
-                        <p className="m-0">{ user.stats.totalFollowing }</p>
+                        <p className="m-0">{ user.stats?.totalFollowing ? user.stats?.totalFollowing : 0 }</p>
                     </div>
                     <div className="col-3 d-flex flex-column justify-content-center align-items-center p-2 border-start">
                         <h6 className="m-0 fw-bold">Post</h6>
-                        <p className="m-0">{ user.stats.totalPosts }</p>
+                        <p className="m-0">{ user.stats?.totalPosts ? user.stats?.totalPosts : 0 }</p>
                     </div>
                     <div className="col-3 d-flex flex-column justify-content-center align-items-center p-2 border-start">
                         <h6 className="m-0 fw-bold">Collects</h6>
-                        <p className="m-0">{ user.stats.totalCollects }</p>
+                        <p className="m-0">{ user.stats?.totalCollects ? user.stats?.totalCollects : 0 }</p>
                     </div>
                 </div>
 
                 <div className="mb-4">
                     <h6 className="fw-bold">bio:</h6>
-                    <p className="mb-1">{ user.bio }</p>
+                    <p className="mb-1">{ user?.bio ? user?.bio : '' }</p>
                 </div>
-                { user.id !== userLogged.id && <>
-                    <button type="button" className="btn btn-outline-primary btn-join-us rounded-pill m-2">Let's Talk</button>
+                { user?.id !== userLogged?.id && <>
+                    <button type="button" className="btn btn-outline-primary btn-join-us rounded-pill m-2" onClick={ () => {
+                        setShow(true);
+                    }}>Let's Talk</button>
                     <button type="button" className="btn btn-primary btn-join-us rounded-pill m-2"><BsPlus size={25} /> Follow</button>
+                    <ModalCustom 
+                        handleClose={ handleClose } 
+                        show={ show } 
+                        title={ <h3 className="m-0 fw-bold">{ `Let's talk with ${ user?.name ?? 'a new user' }` }</h3> }
+                        body={ <div>
+                            <p className="mb-3">From: <span className="fw-bold">{ userLogged?.handle ? userLogged?.handle : 'Anonymous' }</span></p>
+                            
+                            <p className="mb-1">Mensaje:</p>
+                            <input type="text" ref={ refMessage } placeholder="type a message" className="form-control mb-2" />
+                        </div> }
+                        footer={<div>
+                            <button type="button" onClick={ () => setShow(false) } className="btn btn-sm btn-outline-primary mx-2">Cerrar</button>
+                            <button type="button" onClick={ onSendMessage } className="btn btn-sm btn-primary mx-2">Aceptar</button>
+                        </div>
+                    } />
                     {/* <button type="button" className="btn btn-outline-danger btn-join-us rounded-pill m-2" onClick={ onSignOut }>Sign Out</button> */}
                 </>}
             </div>
@@ -559,7 +588,7 @@ const UserProfile = () => {
                     { handleTitle() }
                 </div>
                 <div className="col-12 col-md-4 pb-5 d-flex justify-content-center align-items-center">
-                    <img src={ validateUserPicUrl(user) } alt="networking" className="rounded-circle border shadow profile-pic-big" />
+                    <img src={ validateUserPicUrl(user) ?? '/img/user.png' } alt="networking" className="rounded-circle border shadow profile-pic-big" />
                 </div>
             </div>
 
@@ -630,7 +659,7 @@ const UserProfile = () => {
                     </select>
                 </div>
 
-                { user.id === userLogged.id && ( 
+                { user?.id === userLogged?.id && ( 
                 <div className="pt-4 d-flex justify-content-center align-items-center">
                     {   update ?
                         <>

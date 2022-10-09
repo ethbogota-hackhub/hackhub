@@ -16,6 +16,10 @@ const Navbar = () => {
                 </Link>
             </h1>
             <ul className='d-flex flex-row justify-content-end m-2'>
+                <Link to='/chat' onClick={() => scrollToTop(0)}>
+                    Chat
+                </Link>
+
                 <Link to='/attendees' onClick={() => scrollToTop(0)}>
                     Attendees
                 </Link>

@@ -73,7 +73,7 @@ const LoginButton = () => {
                 const handleProfile = () => {
                     return (
                         <div className='d-flex justify-content-center align-items-center m-2'>
-                            <img src={ userPictureUrl ?? '' } alt="myprofile" className="profile-pic rounded-circle" onClick={ onShowProfile } />
+                            <img src={ userPictureUrl || '/img/user.png' } alt="myprofile" className="profile-pic rounded-circle" onClick={ onShowProfile } />
                         </div>
                     );
                 }

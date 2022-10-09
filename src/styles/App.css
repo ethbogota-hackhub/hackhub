@@ -27,6 +27,22 @@ background-color: #64713e;
   cursor: pointer;
 }
 
+/* CHAT */
+.chat-card {
+  min-height: 500px;
+  border-radius: 2.5rem;
+}
+
+.chat-bgnd {
+  background-color: #f0f0f0;
+  height: 400px!important;
+  border-radius: 1.8rem;
+}
+
+.show-sms {
+  height: 90%;
+}
+
 /* ATTENDEES */
 .grid-attendees {
   max-width: 210px;

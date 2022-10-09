@@ -11,9 +11,10 @@ import UserProfile from './views/UserProfile';
 import Attendees from './views/Attendees';
 import Events from './views/Events';
 import EventDetails from './views/EventDetails';
+import Organizer from './views/Organizer';
+import Chat from './views/Chat';
 
 import './styles/App.css';
-import Organizer from './views/Organizer';
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path='' element={<Home />} />
+            <Route path='chat' element={<Chat />} />
             <Route path='attendees' element={<Attendees />} />
             <Route path='events'>
               <Route path='' element={<Events />} />
