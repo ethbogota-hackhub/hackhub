@@ -1,5 +1,4 @@
 import { ApolloProvider } from '@apollo/client';
-import { ConnectKitButton } from 'connectkit';
 import AppProvider from './contexts/app/AppProvider';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { apolloClient } from './lib/apollo/apolloClient';
