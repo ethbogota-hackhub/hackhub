@@ -9,7 +9,7 @@ import { onError } from '@apollo/client/link/error';
 import fetch from 'cross-fetch';
 // import { LENS_API } from './config';
 import { PROFILES_BY_ADDRESS } from './queries';
-
+import { getStorageValue } from '../../common/utils';
 
 const LENS_API = 'https://api-mumbai.lens.dev/';
 
@@ -30,7 +30,7 @@ const httpLink = new HttpLink({
 });
 
 const getAuthenticationToken = () => {
-	return localStorage.getItem('accessToken');
+	return getStorageValue('accessToken');
 };
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
