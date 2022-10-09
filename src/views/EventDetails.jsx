@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 const EventDetails = () => {
     const { state } = useLocation();
     const [event,] = useState(state);
+    const [tempSMS, setTempSMS] = useState('');
+    const [tempSMS2, setTempSMS2] = useState('')
 
     return (
         <div className="container-fluid">
@@ -51,7 +53,20 @@ const EventDetails = () => {
                     <p>$ 0.00</p>
                 </div>
                 <div>
-                    <button className="btn btn-primary btn-join-us rounded-pill p-2">See attendees</button>
+                    <button className="btn btn-primary btn-join-us rounded-pill m-2 p-2" onClick={() => {
+                        setTempSMS('This function will be available soon!!');
+                        setTimeout(() => {
+                            setTempSMS('');
+                        }, 8000);
+                    }}>See attendees</button>
+                    <p className="fw-bold fst-italic text-success">{ tempSMS }</p>
+                    <button className="btn btn-outline-primary btn-join-us rounded-pill m-2 p-2" onClick={() => {
+                        setTempSMS2('This function will be available soon!!');
+                        setTimeout(() => {
+                            setTempSMS2('');
+                        }, 8000);
+                    }}>Attend</button>
+                    <p className="fw-bold fst-italic text-success">{ tempSMS2 }</p>
                 </div>
             </div>
 
