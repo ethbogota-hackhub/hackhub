@@ -1,3 +1,6 @@
+import * as PushAPI from "@pushprotocol/restapi";
+import * as ethers from "ethers";
+
 export const scrollToTop = (value) => window.scrollTo({ behavior: 'smooth', top: value })
 
 export const removeItemStorage = (key) => {
@@ -52,11 +55,38 @@ export function getProfileImageURLFromProfileObject(profile) {
 }
 
 export const validateUserPicUrl = (profile) => {
-    if (!profile.picture) return '/img/unknown.png';
+    if (!profile?.picture) return '/img/unknown.png';
 
-    if (profile.picture.original.url.includes('ipfs://')) {
+    if (profile?.picture.original.url.includes('ipfs://')) {
       return getProfileImageURLFromProfileObject(profile);
     }
 
     return profile?.picture.original.url;
-} 
+}
+
+export const sendMessage = async (subject, body, to) => {
+    const PK = '8e9e3b490576f8e7a950cb9de2cbc1a832e71cde938470f54595c64c601e587e'; // channel private key
+    const Pkey = `0x${PK}`;
+    const signer = new ethers.Wallet(Pkey);
+
+    // apiResponse?.status === 204, if sent successfully!
+    const apiResponse = await PushAPI.payloads.sendNotification({
+    signer,
+    type: 3, // target
+    identityType: 2, // direct payload
+    notification: {
+        title: subject,
+        body: body
+    },
+    payload: {
+        title: subject,
+        body: body,
+        cta: '',
+        img: ''
+    },
+    recipients: `eip155:5:${to}`, // recipient address
+    channel: 'eip155:5:0xc916578135a8B7c034Cb0114A6E762cd55383351', // your channel address
+    env: 'staging'
+    });
+    return apiResponse; 
+}
