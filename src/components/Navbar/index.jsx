@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <h1 className='m-3 fw-bold m-0 color-primary logo'>
-                <Link to=''>
+                <Link to='' onClick={() => scrollToTop(0)}>
                     hackhub
                 </Link>
             </h1>

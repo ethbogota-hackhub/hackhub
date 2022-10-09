@@ -7,7 +7,7 @@ import { FiUserCheck } from 'react-icons/fi';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { CHALLENGE_QUERY, AUTHENTICATE_MUTATION } from '../lib/apollo/queries';
 import { getFirstProfileOwnedBy } from '../lib/apollo/apolloClient';
-import { getProfileImageURLFromProfileObject } from '../common/utils';
+import { getProfileImageURLFromProfileObject, getStorageValue, setStorageValue } from '../common/utils';
 import { useSignMessage, useAccount } from 'wagmi';
 import { Link } from 'react-router-dom';
 
@@ -35,8 +35,8 @@ const LoginButton = () => {
             console.log(auth);
 
             // save auth token
-            localStorage.setItem('accessToken', auth.data?.authenticate.accessToken);
-            localStorage.setItem('refreshToken', auth.data?.authenticate.refreshToken);
+            setStorageValue('accessToken', auth.data?.authenticate.accessToken);
+            setStorageValue('refreshToken', auth.data?.authenticate.refreshToken);
 
             const profile = await getFirstProfileOwnedBy(address);
             const profilePictureUrl = getProfileImageURLFromProfileObject(profile);
@@ -68,6 +68,7 @@ const LoginButton = () => {
                         </div>
                     );
                 }
+                console.log(authenticate)
 
                 return (
                     !authenticate 

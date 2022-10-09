@@ -22,6 +22,11 @@ background-color: #64713e;
 
 
 /* CUSTOM STYLES */
+/* POINTER */
+.cursor-pointer {
+  cursor: pointer;
+}
+
 /* ATTENDEES */
 .grid-attendees {
   max-width: 210px;
@@ -39,6 +44,10 @@ background-color: #64713e;
 .card-attendees:active:focus {
   background-color: #dadada;
   transition: 250ms;
+}
+
+.container-attendees {
+  border-radius: 2.5rem;
 }
 
 @media only screen and (max-width: 575px) {
